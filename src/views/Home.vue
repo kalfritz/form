@@ -87,11 +87,15 @@ export default {
           this.errorMessage = "";
           this.loading = true;
           const response = await api.post("/users", {
-            newUser: this.newUser
+            newUser: {
+              name: this.newUser.name,
+              username: this.newUser.username,
+              email: this.newUser.email,
+              password: this.newUser.password
+            }
           });
 
           // const { user, token } = response.data;
-          console.log(response.data);
           this.loading = false;
 
           this.successMessage = "Logged In successfully";
